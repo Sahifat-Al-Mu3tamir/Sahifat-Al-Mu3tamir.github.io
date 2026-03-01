@@ -1,0 +1,2650 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1a2f23">
+        <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+    <link rel="apple-touch-icon" href="icon-512.png">
+    
+    <!-- iOS PWA Configuration -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Guide 'Omra">
+    
+    <!-- Splash screen iOS -->
+    <meta name="format-detection" content="telephone=no">
+    <title>صَحِيفَةُ الْمُعْتَمِر — Guide Sacré du Pèlerin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           VARIABLES & RESET
+        ======================================== */
+        :root {
+            --primary-dark: #1a2f23;
+            --primary: #2d4a3e;
+            --primary-light: #3d6b5a;
+            --accent-gold: #d4af37;
+            --accent-gold-light: #f4e4bc;
+            --accent-gold-dark: #b8960c;
+            --surface: #f8f6f2;
+            --surface-elevated: #ffffff;
+            --surface-muted: #ebe8e3;
+            --text-primary: #1a1a1a;
+            --text-secondary: #5a5a5a;
+            --text-muted: #8a8a8a;
+            --text-on-dark: #ffffff;
+            --text-on-gold: #1a1a1a;
+            --success: #2e7d32;
+            --success-bg: #e8f5e9;
+            --warning: #f57c00;
+            --warning-bg: #fff3e0;
+            --info: #1976d2;
+            --info-bg: #e3f2fd;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 6px 10px rgba(0,0,0,0.08);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15), 0 10px 20px rgba(0,0,0,0.1);
+            --shadow-gold: 0 4px 15px rgba(212,175,55,0.3);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition-fast: 0.15s ease;
+            --transition-base: 0.25s ease;
+            --transition-slow: 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(165deg, #1a2a21 0%, #0f1a14 50%, #1a2a21 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Motif géométrique islamique élaboré */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='islamicPattern' patternUnits='userSpaceOnUse' width='200' height='200'%3E%3Cg fill='none' stroke='%23d4af37' opacity='0.12'%3E%3C!-- Étoile centrale 8 branches --%3E%3Cpath stroke-width='1' d='M100 30 L108 70 L145 55 L120 85 L160 100 L120 115 L145 145 L108 130 L100 170 L92 130 L55 145 L80 115 L40 100 L80 85 L55 55 L92 70 Z'/%3E%3C!-- Cercles concentriques --%3E%3Ccircle cx='100' cy='100' r='25' stroke-width='0.8'/%3E%3Ccircle cx='100' cy='100' r='15' stroke-width='0.5'/%3E%3Ccircle cx='100' cy='100' r='45' stroke-width='0.5'/%3E%3C!-- Étoiles aux coins --%3E%3Cpath stroke-width='0.8' d='M0 0 L8 20 L0 40 L-8 20 Z' transform='translate(100,0)'/%3E%3Cpath stroke-width='0.8' d='M0 0 L8 20 L0 40 L-8 20 Z' transform='translate(100,200)'/%3E%3Cpath stroke-width='0.8' d='M0 0 L20 8 L40 0 L20 -8 Z' transform='translate(0,100)'/%3E%3Cpath stroke-width='0.8' d='M0 0 L20 8 L40 0 L20 -8 Z' transform='translate(160,100)'/%3E%3C!-- Petites étoiles 4 branches --%3E%3Cpath stroke-width='0.6' d='M0 -8 L2 -2 L8 0 L2 2 L0 8 L-2 2 L-8 0 L-2 -2 Z' transform='translate(50,50)'/%3E%3Cpath stroke-width='0.6' d='M0 -8 L2 -2 L8 0 L2 2 L0 8 L-2 2 L-8 0 L-2 -2 Z' transform='translate(150,50)'/%3E%3Cpath stroke-width='0.6' d='M0 -8 L2 -2 L8 0 L2 2 L0 8 L-2 2 L-8 0 L-2 -2 Z' transform='translate(50,150)'/%3E%3Cpath stroke-width='0.6' d='M0 -8 L2 -2 L8 0 L2 2 L0 8 L-2 2 L-8 0 L-2 -2 Z' transform='translate(150,150)'/%3E%3C!-- Arcs entrelacés --%3E%3Cpath stroke-width='0.7' d='M30 100 Q65 65 100 100 Q135 135 170 100'/%3E%3Cpath stroke-width='0.7' d='M100 30 Q65 65 100 100 Q135 135 100 170'/%3E%3Cpath stroke-width='0.7' d='M30 100 Q65 135 100 100 Q135 65 170 100'/%3E%3Cpath stroke-width='0.7' d='M100 30 Q135 65 100 100 Q65 135 100 170'/%3E%3C!-- Hexagones --%3E%3Cpolygon stroke-width='0.4' points='100,60 120,75 120,95 100,110 80,95 80,75'/%3E%3C!-- Lignes diagonales --%3E%3Cline x1='0' y1='0' x2='50' y2='50' stroke-width='0.3'/%3E%3Cline x1='200' y1='0' x2='150' y2='50' stroke-width='0.3'/%3E%3Cline x1='0' y1='200' x2='50' y2='150' stroke-width='0.3'/%3E%3Cline x1='200' y1='200' x2='150' y2='150' stroke-width='0.3'/%3E%3C!-- Carrés rotatifs --%3E%3Crect x='90' y='90' width='20' height='20' transform='rotate(45 100 100)' stroke-width='0.5'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23islamicPattern)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Overlay lumineux */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(212,175,55,0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(212,175,55,0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.02) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 12px;
+            padding-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========================================
+           HEADER
+        ======================================== */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            border-radius: var(--radius-xl);
+            padding: 35px 25px;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl), 0 0 60px rgba(212,175,55,0.1);
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 50%);
+            animation: headerGlow 10s ease-in-out infinite;
+        }
+
+        @keyframes headerGlow {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(5%, 5%) rotate(5deg); }
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            border-radius: 2px;
+        }
+
+        .bismillah {
+            font-family: 'Amiri', 'Traditional Arabic', serif;
+            font-size: 2.1rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 0 2px 15px rgba(212,175,55,0.4);
+        }
+
+        header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.4rem;
+            color: var(--text-on-dark);
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-subtitle {
+            font-size: 0.8rem;
+            color: var(--accent-gold-light);
+            font-weight: 400;
+            letter-spacing: 3px;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        /* ========================================
+           INPUTS CACHÉS
+        ======================================== */
+        input[name="main"],
+        input[name="etape"],
+        input[name="cas"],
+        input[name="tal"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        /* ========================================
+           ONGLETS PRINCIPAUX
+        ======================================== */
+        .main-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 0;
+            padding: 0 5px;
+        }
+
+        .main-tabs label {
+            flex: 1;
+            text-align: center;
+            padding: 20px 15px;
+            background: linear-gradient(180deg, var(--surface-elevated) 0%, var(--surface) 100%);
+            color: var(--text-secondary);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all var(--transition-base);
+            border: 2px solid var(--surface-muted);
+            border-bottom: none;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-tabs label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .main-tabs label:hover::before {
+            opacity: 0.5;
+        }
+
+        .main-tabs label:active {
+            transform: scale(0.98);
+        }
+
+        #main1:checked ~ .main-tabs label[for="main1"],
+        #main2:checked ~ .main-tabs label[for="main2"] {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--text-on-dark);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        #main1:checked ~ .main-tabs label[for="main1"]::before,
+        #main2:checked ~ .main-tabs label[for="main2"]::before {
+            opacity: 1;
+        }
+
+        /* Icônes des onglets principaux */
+        .tab-icon-custom {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--surface-muted) 0%, var(--surface) 100%);
+            border: 2px solid rgba(212,175,55,0.3);
+            transition: all var(--transition-base);
+            position: relative;
+        }
+
+        /* Icône Kaaba */
+        .tab-icon-omra::before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            border: 2px solid var(--accent-gold);
+            transform: rotate(45deg);
+            box-shadow: inset -3px -3px 0 rgba(0,0,0,0.15);
+        }
+        .tab-icon-omra::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 2px;
+            background: var(--accent-gold);
+            box-shadow: 0 -4px 0 var(--accent-gold);
+        }
+
+        /* Icône Mains en prière */
+        .tab-icon-janaza::before {
+            content: '';
+            width: 20px;
+            height: 16px;
+            border: 3px solid var(--primary);
+            border-radius: 50% 50% 0 0;
+            border-bottom: none;
+        }
+        .tab-icon-janaza::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            width: 6px;
+            height: 10px;
+            border: 2.5px solid var(--primary);
+            border-radius: 0 0 50% 50%;
+            border-top: none;
+        }
+
+        #main1:checked ~ .main-tabs label[for="main1"] .tab-icon-custom,
+        #main2:checked ~ .main-tabs label[for="main2"] .tab-icon-custom {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: var(--shadow-gold);
+        }
+
+        #main1:checked ~ .main-tabs label[for="main1"] .tab-icon-omra::before {
+            background: var(--primary-dark);
+            border-color: var(--text-on-dark);
+        }
+        #main1:checked ~ .main-tabs label[for="main1"] .tab-icon-omra::after {
+            background: var(--text-on-dark);
+            box-shadow: 0 -4px 0 var(--text-on-dark);
+        }
+
+        #main2:checked ~ .main-tabs label[for="main2"] .tab-icon-janaza::before,
+        #main2:checked ~ .main-tabs label[for="main2"] .tab-icon-janaza::after {
+            border-color: var(--primary-dark);
+        }
+
+        /* ========================================
+           CONTENU PRINCIPAL
+        ======================================== */
+        .main-content {
+            display: none;
+            background: var(--surface-elevated);
+            border: 2px solid var(--surface-muted);
+            border-top: none;
+            border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            animation: contentFadeIn 0.4s ease;
+        }
+
+        @keyframes contentFadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #main1:checked ~ .main-content.content-omra,
+        #main2:checked ~ .main-content.content-janaza {
+            display: block;
+        }
+
+        /* ========================================
+           ONGLETS ÉTAPES
+        ======================================== */
+        .etape-tabs-container {
+            background: linear-gradient(180deg, var(--surface-muted) 0%, var(--surface) 100%);
+            padding: 18px 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .etape-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .etape-tabs label {
+            padding: 10px 16px;
+            background: var(--surface-elevated);
+            color: var(--text-secondary);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.8rem;
+            transition: all var(--transition-fast);
+            border: 1.5px solid var(--surface-muted);
+            box-shadow: var(--shadow-sm);
+            white-space: nowrap;
+        }
+
+        .etape-tabs label:active {
+            transform: scale(0.95);
+        }
+
+        #e1:checked ~ .omra-wrap .etape-tabs label[for="e1"],
+        #e2:checked ~ .omra-wrap .etape-tabs label[for="e2"],
+        #e3:checked ~ .omra-wrap .etape-tabs label[for="e3"],
+        #e4:checked ~ .omra-wrap .etape-tabs label[for="e4"],
+        #e5:checked ~ .omra-wrap .etape-tabs label[for="e5"],
+        #e6:checked ~ .omra-wrap .etape-tabs label[for="e6"],
+        #e7:checked ~ .omra-wrap .etape-tabs label[for="e7"],
+        #e8:checked ~ .omra-wrap .etape-tabs label[for="e8"],
+        #e9:checked ~ .omra-wrap .etape-tabs label[for="e9"],
+        #e10:checked ~ .omra-wrap .etape-tabs label[for="e10"],
+        #e11:checked ~ .omra-wrap .etape-tabs label[for="e11"] {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+            color: var(--text-on-gold);
+            border-color: var(--accent-gold-dark);
+            box-shadow: var(--shadow-gold);
+            font-weight: 600;
+        }
+
+        .etape-content {
+            display: none;
+            padding: 28px 22px;
+            animation: contentFadeIn 0.3s ease;
+        }
+
+        #e1:checked ~ .omra-wrap .ec1,
+        #e2:checked ~ .omra-wrap .ec2,
+        #e3:checked ~ .omra-wrap .ec3,
+        #e4:checked ~ .omra-wrap .ec4,
+        #e5:checked ~ .omra-wrap .ec5,
+        #e6:checked ~ .omra-wrap .ec6,
+        #e7:checked ~ .omra-wrap .ec7,
+        #e8:checked ~ .omra-wrap .ec8,
+        #e9:checked ~ .omra-wrap .ec9,
+        #e10:checked ~ .omra-wrap .ec10,
+        #e11:checked ~ .omra-wrap .ec11 {
+            display: block;
+        }
+
+        /* ========================================
+           TITRES
+        ======================================== */
+        .etape-titre {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-bottom: 28px;
+            padding-bottom: 18px;
+            border-bottom: 3px solid var(--accent-gold);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .etape-titre::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .etape-numero {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+            color: var(--text-on-gold);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-gold);
+            flex-shrink: 0;
+        }
+
+        /* ========================================
+           SÉLECTEURS DE CAS
+        ======================================== */
+        .cas-selector, .tal-selector {
+            margin-bottom: 28px;
+        }
+
+        .selector-title {
+            font-size: 1.05rem;
+            color: var(--primary-dark);
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+
+        .cas-options, .tal-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+        }
+
+        .cas-options label, .tal-options label {
+            padding: 18px 12px;
+            background: linear-gradient(180deg, var(--surface-elevated) 0%, var(--surface) 100%);
+            border: 2px solid var(--surface-muted);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: all var(--transition-base);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cas-options label:active, .tal-options label:active {
+            transform: scale(0.97);
+        }
+
+        .cas-options label::before, .tal-options label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(212,175,55,0.08) 100%);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .cas-options label:hover::before, .tal-options label:hover::before {
+            opacity: 1;
+        }
+
+        .option-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--surface-muted) 0%, var(--surface) 100%);
+            border: 2px solid rgba(212,175,55,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all var(--transition-base);
+        }
+
+        .label-text {
+            display: block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        /* Icône Avion */
+        .option-icon.plane::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 18px solid var(--primary);
+            transform: rotate(-45deg);
+            position: relative;
+            left: 2px;
+            top: -2px;
+        }
+        .option-icon.plane::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 3px;
+            background: var(--primary);
+            transform: rotate(-45deg);
+            top: 55%;
+            left: 15%;
+            border-radius: 2px;
+        }
+
+        /* Icône Mosquée */
+        .option-icon.mosque::before {
+            content: '';
+            width: 18px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50% 50% 0 0;
+            position: relative;
+            top: 3px;
+        }
+        .option-icon.mosque::after {
+            content: '';
+            position: absolute;
+            right: 10px;
+            top: 6px;
+            width: 5px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 3px 3px 0 0;
+        }
+
+        /* Icône Voiture */
+        .option-icon.car::before {
+            content: '';
+            width: 24px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 8px 8px 3px 3px;
+            position: relative;
+            top: -2px;
+        }
+        .option-icon.car::after {
+            content: '';
+            position: absolute;
+            bottom: 11px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 7px;
+            height: 7px;
+            background: var(--surface-elevated);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            box-shadow: 14px 0 0 var(--surface-elevated), 14px 0 0 0 2px var(--primary), -14px 0 0 var(--surface-elevated), -14px 0 0 0 2px var(--primary);
+        }
+
+        /* Icône Maison */
+        .option-icon.home::before {
+            content: '';
+            width: 22px;
+            height: 16px;
+            background: var(--primary);
+            clip-path: polygon(50% 0%, 100% 45%, 100% 100%, 0% 100%, 0% 45%);
+        }
+        .option-icon.home::after {
+            content: '';
+            position: absolute;
+            bottom: 13px;
+            width: 7px;
+            height: 9px;
+            background: var(--surface-elevated);
+            border-radius: 2px 2px 0 0;
+        }
+
+        /* Icône Kaaba */
+        .option-icon.kaaba::before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            border: 2px solid var(--accent-gold);
+            transform: rotate(45deg);
+            box-shadow: inset -3px -3px 0 rgba(0,0,0,0.15);
+        }
+        .option-icon.kaaba::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 2px;
+            background: var(--accent-gold);
+        }
+
+        /* Icône Marche */
+        .option-icon.walk::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: relative;
+            top: -8px;
+        }
+        .option-icon.walk::after {
+            content: '';
+            position: absolute;
+            top: 48%;
+            width: 4px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        /* États actifs des sélecteurs */
+        #cas1:checked ~ .cas-wrap .cas-options label[for="cas1"],
+        #cas2:checked ~ .cas-wrap .cas-options label[for="cas2"],
+        #cas3:checked ~ .cas-wrap .cas-options label[for="cas3"],
+        #cas4:checked ~ .cas-wrap .cas-options label[for="cas4"],
+        #cas5:checked ~ .cas-wrap .cas-options label[for="cas5"],
+        #tal1:checked ~ .tal-wrap .tal-options label[for="tal1"],
+        #tal2:checked ~ .tal-wrap .tal-options label[for="tal2"],
+        #tal3:checked ~ .tal-wrap .tal-options label[for="tal3"] {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-color: var(--primary);
+            color: var(--text-on-dark);
+            box-shadow: var(--shadow-md);
+        }
+
+        #cas1:checked ~ .cas-wrap .cas-options label[for="cas1"] .option-icon,
+        #cas2:checked ~ .cas-wrap .cas-options label[for="cas2"] .option-icon,
+        #cas3:checked ~ .cas-wrap .cas-options label[for="cas3"] .option-icon,
+        #cas4:checked ~ .cas-wrap .cas-options label[for="cas4"] .option-icon,
+        #cas5:checked ~ .cas-wrap .cas-options label[for="cas5"] .option-icon,
+        #tal1:checked ~ .tal-wrap .tal-options label[for="tal1"] .option-icon,
+        #tal2:checked ~ .tal-wrap .tal-options label[for="tal2"] .option-icon,
+        #tal3:checked ~ .tal-wrap .tal-options label[for="tal3"] .option-icon {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        #cas1:checked ~ .cas-wrap .cas-options label[for="cas1"] .option-icon::before,
+        #cas1:checked ~ .cas-wrap .cas-options label[for="cas1"] .option-icon::after,
+        #cas2:checked ~ .cas-wrap .cas-options label[for="cas2"] .option-icon::before,
+        #cas2:checked ~ .cas-wrap .cas-options label[for="cas2"] .option-icon::after,
+        #cas3:checked ~ .cas-wrap .cas-options label[for="cas3"] .option-icon::before,
+        #cas4:checked ~ .cas-wrap .cas-options label[for="cas4"] .option-icon::before,
+        #cas4:checked ~ .cas-wrap .cas-options label[for="cas4"] .option-icon::after,
+        #tal1:checked ~ .tal-wrap .tal-options label[for="tal1"] .option-icon::before,
+        #tal1:checked ~ .tal-wrap .tal-options label[for="tal1"] .option-icon::after,
+        #tal2:checked ~ .tal-wrap .tal-options label[for="tal2"] .option-icon::before,
+        #tal3:checked ~ .tal-wrap .tal-options label[for="tal3"] .option-icon::before,
+        #tal3:checked ~ .tal-wrap .tal-options label[for="tal3"] .option-icon::after {
+            background: var(--text-on-dark);
+            border-color: var(--text-on-dark);
+        }
+
+        #cas3:checked ~ .cas-wrap .cas-options label[for="cas3"] .option-icon::after,
+        #tal2:checked ~ .tal-wrap .tal-options label[for="tal2"] .option-icon::after {
+            background: var(--primary);
+            border-color: var(--text-on-dark);
+            box-shadow: 14px 0 0 var(--primary), 14px 0 0 0 2px var(--text-on-dark), -14px 0 0 var(--primary), -14px 0 0 0 2px var(--text-on-dark);
+        }
+
+        #cas5:checked ~ .cas-wrap .cas-options label[for="cas5"] .option-icon::before {
+            background: linear-gradient(135deg, var(--text-on-dark) 0%, #e0e0e0 100%);
+            border-color: var(--accent-gold);
+        }
+        #cas5:checked ~ .cas-wrap .cas-options label[for="cas5"] .option-icon::after {
+            background: var(--accent-gold);
+        }
+
+        .cas-content, .tal-content {
+            display: none;
+            animation: contentFadeIn 0.3s ease;
+        }
+
+        #cas1:checked ~ .cas-wrap .cc1,
+        #cas2:checked ~ .cas-wrap .cc2,
+        #cas3:checked ~ .cas-wrap .cc3,
+        #cas4:checked ~ .cas-wrap .cc4,
+        #cas5:checked ~ .cas-wrap .cc5,
+        #tal1:checked ~ .tal-wrap .tc1,
+        #tal2:checked ~ .tal-wrap .tc2,
+        #tal3:checked ~ .tal-wrap .tc3 {
+            display: block;
+        }
+
+        /* ========================================
+           COMPOSANTS
+        ======================================== */
+        .contexte {
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-muted) 100%);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contexte-row {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+
+        .contexte-row:last-child { margin-bottom: 0; }
+
+        .contexte-label {
+            font-weight: 700;
+            color: var(--primary);
+            min-width: 95px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding-top: 3px;
+        }
+
+        .contexte-value {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            flex: 1;
+        }
+
+        .tuto {
+            margin-bottom: 25px;
+        }
+
+        .tuto-label {
+            font-size: 0.7rem;
+            color: var(--accent-gold-dark);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tuto-label::before {
+            content: '';
+            width: 25px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-dark));
+            border-radius: 2px;
+        }
+
+        .action {
+            background: var(--surface-elevated);
+            border: 1px solid var(--surface-muted);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 20px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .action p { margin-bottom: 12px; }
+        .action p:last-child { margin-bottom: 0; }
+        .action ul { margin: 12px 0 0 22px; }
+        .action li { margin-bottom: 10px; color: var(--text-secondary); }
+        .action strong { color: var(--primary-dark); }
+
+        /* ========================================
+           INVOCATIONS — POLICE ARABE AUGMENTÉE
+        ======================================== */
+        .invocation {
+            background: linear-gradient(135deg, #f0f7f3 0%, #e0efe8 100%);
+            border: 1px solid rgba(45,74,62,0.1);
+            border-left: 4px solid var(--primary-light);
+            border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .invocation::before {
+            content: '✦';
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            opacity: 0.35;
+        }
+
+        .invocation-label {
+            font-size: 0.7rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .arabe {
+            font-family: 'Amiri', 'Traditional Arabic', serif;
+            font-size: 1.85rem;
+            line-height: 2.5;
+            text-align: right;
+            direction: rtl;
+            color: var(--primary-dark);
+            background: rgba(255,255,255,0.7);
+            padding: 18px;
+            border-radius: var(--radius-md);
+            margin-bottom: 14px;
+            border: 1px solid rgba(45,74,62,0.05);
+        }
+
+        .phonetique {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 12px;
+            padding: 12px;
+            background: rgba(0,0,0,0.02);
+            border-radius: var(--radius-sm);
+            letter-spacing: 0.3px;
+        }
+
+        .trad {
+            font-size: 0.95rem;
+            color: var(--primary);
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        /* ========================================
+           PREUVES
+        ======================================== */
+        .dalil {
+            padding-top: 28px;
+            margin-top: 28px;
+            border-top: 2px dashed var(--surface-muted);
+        }
+
+        .dalil-label {
+            font-size: 0.7rem;
+            color: #7a5a8a;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dalil-label::before {
+            content: '📖';
+        }
+
+        .preuve {
+            background: linear-gradient(135deg, #f8f5fa 0%, #f0ecf5 100%);
+            border: 1px solid rgba(122,90,138,0.1);
+            border-left: 4px solid #9a7aaa;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 20px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .preuve-type {
+            font-size: 0.65rem;
+            color: #7a5a8a;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .preuve .arabe {
+            background: rgba(255,255,255,0.6);
+            color: #3a3a5a;
+        }
+
+        .preuve .trad {
+            color: #5a4a6a;
+            font-weight: 400;
+        }
+
+        .preuve p {
+            margin-bottom: 12px;
+            color: #4a4a6a;
+        }
+
+        .ref {
+            font-size: 0.8rem;
+            color: #6a5a7a;
+            margin-top: 14px;
+            padding: 10px 16px;
+            background: rgba(255,255,255,0.6);
+            border-radius: var(--radius-sm);
+            display: inline-block;
+            border: 1px solid rgba(122,90,138,0.1);
+        }
+
+        .ref strong { color: #5a4a7a; }
+
+        /* ========================================
+           ALERTES
+        ======================================== */
+        .note {
+            background: var(--info-bg);
+            border: 1px solid rgba(25,118,210,0.2);
+            border-left: 4px solid var(--info);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-size: 0.9rem;
+            color: #1565c0;
+            margin: 18px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .note::before { content: "ℹ"; font-weight: bold; flex-shrink: 0; font-size: 1rem; }
+
+        .warning {
+            background: var(--warning-bg);
+            border: 1px solid rgba(245,124,0,0.2);
+            border-left: 4px solid var(--warning);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-size: 0.9rem;
+            color: #e65100;
+            margin: 18px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .warning::before { content: "⚠"; flex-shrink: 0; font-size: 1rem; }
+
+        .success {
+            background: var(--success-bg);
+            border: 1px solid rgba(46,125,50,0.2);
+            border-left: 4px solid var(--success);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-size: 0.9rem;
+            color: #1b5e20;
+            margin: 18px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .success::before { content: "✓"; font-weight: bold; flex-shrink: 0; font-size: 1rem; }
+
+        /* ========================================
+           TABLEAUX
+        ======================================== */
+        .tableau {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.85rem;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tableau th {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 15px 14px;
+            text-align: left;
+            color: var(--text-on-dark);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tableau td {
+            padding: 15px 14px;
+            border-bottom: 1px solid var(--surface-muted);
+            color: var(--text-primary);
+            background: var(--surface-elevated);
+        }
+
+        .tableau tr:last-child td { border-bottom: none; }
+        .tableau tr:nth-child(even) td { background: var(--surface); }
+
+        /* ========================================
+           TIMELINE
+        ======================================== */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 10px;
+            bottom: 10px;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent-gold) 0%, var(--primary-light) 100%);
+            border-radius: 3px;
+        }
+
+        .timeline-step {
+            position: relative;
+            margin-bottom: 24px;
+            padding: 18px;
+            background: var(--surface-elevated);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--surface-muted);
+        }
+
+        .timeline-step:last-child { margin-bottom: 0; }
+
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+            border-radius: 50%;
+            border: 3px solid var(--surface-elevated);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .timeline-step .step-title {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .timeline-step .step-desc {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        /* ========================================
+           BANQUE D'INVOCATIONS
+        ======================================== */
+        .duaa-intro {
+            background: linear-gradient(135deg, var(--accent-gold-light) 0%, #f8f0d8 100%);
+            border: 1px solid rgba(212,175,55,0.25);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .duaa-intro h3 {
+            color: var(--accent-gold-dark);
+            font-size: 1.05rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .duaa-intro ul {
+            margin-left: 22px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .duaa-intro li {
+            margin-bottom: 8px;
+        }
+
+        .duaa-category {
+            margin-bottom: 32px;
+        }
+
+        .duaa-category-title {
+            font-size: 1.05rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-bottom: 18px;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, var(--surface-muted) 0%, var(--surface) 100%);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .duaa-item {
+            background: var(--surface-elevated);
+            border: 1px solid var(--surface-muted);
+            border-radius: var(--radius-md);
+            padding: 22px;
+            margin-bottom: 14px;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-base);
+        }
+
+        .duaa-item:active {
+            transform: scale(0.99);
+            box-shadow: var(--shadow-md);
+        }
+
+        .duaa-item .arabe {
+            font-size: 1.6rem;
+            line-height: 2.3;
+            margin-bottom: 12px;
+        }
+
+        .duaa-item .trad {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .duaa-item .ref {
+            font-size: 0.75rem;
+            margin-top: 12px;
+            padding: 8px 14px;
+        }
+
+        /* ========================================
+           SALAT JANAZA
+        ======================================== */
+        .janaza-inner {
+            padding: 28px 22px;
+        }
+
+        .janaza-intro {
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-muted) 100%);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            margin-bottom: 28px;
+            border: 1px solid var(--surface-muted);
+        }
+
+        .janaza-intro h3 {
+            color: var(--primary-dark);
+            margin-bottom: 14px;
+            font-size: 1.15rem;
+        }
+
+        .janaza-intro p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        .janaza-intro ul {
+            margin: 14px 0 0 22px;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
+
+        .janaza-intro li { margin-bottom: 8px; }
+
+        .takbir-section {
+            margin-bottom: 32px;
+            padding-bottom: 28px;
+            border-bottom: 2px solid var(--surface-muted);
+        }
+
+        .takbir-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .takbir-badge {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--text-on-dark);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .takbir-badge .num {
+            background: rgba(255,255,255,0.2);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .takbir-title {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .cas-defunt {
+            background: var(--surface);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            margin-top: 18px;
+            border: 1px solid var(--surface-muted);
+        }
+
+        .cas-defunt-title {
+            font-size: 0.8rem;
+            color: var(--accent-gold-dark);
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cas-defunt p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+        footer {
+            text-align: center;
+            padding: 35px 25px;
+            margin-top: 28px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg), 0 0 40px rgba(212,175,55,0.1);
+            border: 1px solid rgba(212,175,55,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        footer .dua {
+            font-family: 'Amiri', serif;
+            font-size: 1.7rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.88rem;
+        }
+
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+        @media (max-width: 500px) {
+            .container { padding: 8px; }
+            
+            header { padding: 28px 18px; }
+            .bismillah { font-size: 1.8rem; }
+            header h1 { font-size: 2rem; }
+            
+            .main-tabs { gap: 8px; }
+            .main-tabs label {
+                padding: 16px 10px;
+                font-size: 0.88rem;
+            }
+            .tab-icon-custom { width: 38px; height: 38px; }
+            
+            .etape-tabs label {
+                padding: 8px 12px;
+                font-size: 0.75rem;
+            }
+            
+            .etape-content { padding: 22px 16px; }
+            .etape-titre { font-size: 1.25rem; }
+            
+            .arabe { 
+                font-size: 1.6rem; 
+                line-height: 2.3; 
+                padding: 14px; 
+            }
+            .duaa-item .arabe { 
+                font-size: 1.5rem; 
+            }
+            .bismillah { 
+                font-size: 1.8rem; 
+            }
+            
+            .cas-options, .tal-options {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .cas-options label, .tal-options label {
+                padding: 14px 10px;
+            }
+            
+            .option-icon {
+                width: 42px;
+                height: 42px;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .arabe { font-size: 1.45rem; }
+            .etape-titre { font-size: 1.15rem; }
+            .cas-options, .tal-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
+           BOUTON SCROLL TO TOP
+        ======================================== */
+        .scroll-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg), var(--shadow-gold);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all var(--transition-base);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl), 0 6px 20px rgba(212,175,55,0.4);
+        }
+
+        .scroll-top:active {
+            transform: scale(0.95);
+        }
+
+        /* Flèche vers le haut en CSS pur */
+        .scroll-top::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border-left: 3px solid var(--primary-dark);
+            border-top: 3px solid var(--primary-dark);
+            transform: rotate(45deg) translateY(3px);
+        }
+
+        @media (max-width: 500px) {
+            .scroll-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 15px;
+            }
+            .scroll-top::before {
+                width: 10px;
+                height: 10px;
+                border-width: 2.5px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+            <h1>صَحِيفَةُ الْمُعْتَمِر</h1>
+            <p class="header-subtitle">GUIDE SACRÉ DU PÈLERIN</p>
+        </header>
+
+        <input type="radio" name="main" id="main1" checked>
+        <input type="radio" name="main" id="main2">
+
+        <div class="main-tabs">
+            <label for="main1">
+                <span class="tab-icon-custom tab-icon-omra"></span>
+                <span>'Omra</span>
+            </label>
+            <label for="main2">
+                <span class="tab-icon-custom tab-icon-janaza"></span>
+                <span>Salat Janaza</span>
+            </label>
+        </div>
+
+        <!-- ==========================================
+             CONTENU 'OMRA
+        ========================================== -->
+        <div class="main-content content-omra">
+            
+            <input type="radio" name="etape" id="e1" checked>
+            <input type="radio" name="etape" id="e2">
+            <input type="radio" name="etape" id="e3">
+            <input type="radio" name="etape" id="e4">
+            <input type="radio" name="etape" id="e5">
+            <input type="radio" name="etape" id="e6">
+            <input type="radio" name="etape" id="e7">
+            <input type="radio" name="etape" id="e8">
+            <input type="radio" name="etape" id="e9">
+            <input type="radio" name="etape" id="e10">
+            <input type="radio" name="etape" id="e11">
+
+            <div class="omra-wrap">
+                <div class="etape-tabs-container">
+                    <div class="etape-tabs">
+                        <label for="e1">1. Miqat</label>
+                        <label for="e2">2. Talbiya</label>
+                        <label for="e3">3. Entrée</label>
+                        <label for="e4">4. Kaaba</label>
+                        <label for="e5">5. Tawaf</label>
+                        <label for="e6">6. Maqam</label>
+                        <label for="e7">7. Zamzam</label>
+                        <label for="e8">8. Sa'i</label>
+                        <label for="e9">9. Halq</label>
+                        <label for="e10">10. Sortie</label>
+                        <label for="e11">Du'as</label>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     ÉTAPE 1 : MIQAT
+                ========================================== -->
+                <div class="etape-content ec1">
+                    <div class="etape-titre">
+                        <span class="etape-numero">1</span>
+                        Le Miqat — Entrer en Ihram
+                    </div>
+                    
+                    <input type="radio" name="cas" id="cas1" checked>
+                    <input type="radio" name="cas" id="cas2">
+                    <input type="radio" name="cas" id="cas3">
+                    <input type="radio" name="cas" id="cas4">
+                    <input type="radio" name="cas" id="cas5">
+
+                    <div class="cas-wrap">
+                        <div class="cas-selector">
+                            <p class="selector-title">D'où viens-tu ?</p>
+                            <div class="cas-options">
+                                <label for="cas1">
+                                    <span class="option-icon plane"></span>
+                                    <span class="label-text">Avion → Jeddah</span>
+                                </label>
+                                <label for="cas2">
+                                    <span class="option-icon mosque"></span>
+                                    <span class="label-text">Via Médine</span>
+                                </label>
+                                <label for="cas3">
+                                    <span class="option-icon car"></span>
+                                    <span class="label-text">Voiture / Bus</span>
+                                </label>
+                                <label for="cas4">
+                                    <span class="option-icon home"></span>
+                                    <span class="label-text">Résident Jeddah</span>
+                                </label>
+                                <label for="cas5">
+                                    <span class="option-icon kaaba"></span>
+                                    <span class="label-text">Résident Mecque</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- CAS 1 : AVION -->
+                        <div class="cas-content cc1">
+                            <div class="contexte">
+                                <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">Dans l'avion, en survolant le Miqat</span></div>
+                                <div class="contexte-row"><span class="contexte-label">QUAND</span><span class="contexte-value">À l'annonce du pilote (~30-45 min avant Jeddah)</span></div>
+                                <div class="contexte-row"><span class="contexte-label">MIQAT</span><span class="contexte-value">Al-Juhfa (Rabigh)</span></div>
+                            </div>
+                            <div class="tuto">
+                                <div class="tuto-label">Ce que tu fais</div>
+                                <div class="timeline">
+                                    <div class="timeline-step">
+                                        <div class="step-title">Avant le départ</div>
+                                        <div class="step-desc">Faire le <strong>Ghusl</strong> (douche rituelle). Te <strong>parfumer</strong> le corps (pas les vêtements d'Ihram).</div>
+                                    </div>
+                                    <div class="timeline-step">
+                                        <div class="step-title">Aéroport ou avion</div>
+                                        <div class="step-desc">Te changer en <strong>Ihram</strong> : Izar (pagne) + Rida (écharpe) pour les hommes. Vêtements amples pour les femmes.</div>
+                                    </div>
+                                    <div class="timeline-step">
+                                        <div class="step-title">Annonce du pilote</div>
+                                        <div class="step-desc">Le commandant annonce l'approche du Miqat. Prépare-toi.</div>
+                                    </div>
+                                    <div class="timeline-step">
+                                        <div class="step-title">Formuler l'intention</div>
+                                        <div class="step-desc">Dans ton cœur + prononcer à voix basse :</div>
+                                    </div>
+                                </div>
+                                <div class="invocation">
+                                    <div class="invocation-label">Dire</div>
+                                    <div class="arabe">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</div>
+                                    <div class="phonetique">LABBAYKA ALLAHUMMA 'UMRATAN</div>
+                                    <div class="trad">« Je réponds à Ton appel, Ô Allah, par une 'Omra. »</div>
+                                </div>
+                                <div class="action"><p>Tu atterris à Jeddah <strong>en état d'Ihram</strong>. Commence la Talbiya.</p></div>
+                            </div>
+                            <div class="warning">Si tu dépasses le Miqat sans Ihram → Tu dois payer une <strong>fidya</strong> (sacrifice d'un mouton).</div>
+                        </div>
+
+                        <!-- CAS 2 : VIA MÉDINE -->
+                        <div class="cas-content cc2">
+                            <div class="contexte">
+                                <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">Masjid Dhul-Hulayfa (Abyar Ali)</span></div>
+                                <div class="contexte-row"><span class="contexte-label">QUAND</span><span class="contexte-value">Quand tu quittes Médine pour La Mecque</span></div>
+                                <div class="contexte-row"><span class="contexte-label">DISTANCE</span><span class="contexte-value">9 km de Médine</span></div>
+                            </div>
+                            <div class="tuto">
+                                <div class="tuto-label">Ce que tu fais</div>
+                                <div class="timeline">
+                                    <div class="timeline-step">
+                                        <div class="step-title">Arrivée à Médine</div>
+                                        <div class="step-desc">Tu arrives <strong>sans Ihram</strong>. Profite de ta visite au Masjid An-Nabawi.</div>
+                                    </div>
+                                    <div class="timeline-step">
+                                        <div class="step-title">À l'hôtel (jour du départ)</div>
+                                        <div class="step-desc">Faire le <strong>Ghusl</strong>. Te <strong>parfumer</strong> le corps.</div>
+                                    </div>
+                                    <div class="timeline-step">
+                                        <div class="step-title">Taxi vers le Miqat</div>
+                                        <div class="step-desc">Demander <strong>"Masjid Abyar Ali"</strong> (~15 min en taxi).</div>
+                                    </div>
+                                    <div class="timeline-step">
+                                        <div class="step-title">À la mosquée</div>
+                                        <div class="step-desc">Te changer en Ihram. Prier <strong>2 rakaats</strong> (Sunna, pas obligatoire).</div>
+                                    </div>
+                                    <div class="timeline-step">
+                                        <div class="step-title">En sortant de la mosquée</div>
+                                        <div class="step-desc">Formuler l'intention :</div>
+                                    </div>
+                                </div>
+                                <div class="invocation">
+                                    <div class="invocation-label">Dire</div>
+                                    <div class="arabe">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</div>
+                                    <div class="phonetique">LABBAYKA ALLAHUMMA 'UMRATAN</div>
+                                    <div class="trad">« Je réponds à Ton appel, Ô Allah, par une 'Omra. »</div>
+                                </div>
+                            </div>
+                            <div class="success">C'est le <strong>Miqat du Prophète ﷺ</strong> — le plus éloigné de La Mecque, donc plus de récompenses !</div>
+                        </div>
+
+                        <!-- CAS 3 : VOITURE -->
+                        <div class="cas-content cc3">
+                            <div class="contexte">
+                                <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">Au Miqat correspondant à ta route</span></div>
+                            </div>
+                            <table class="tableau">
+                                <tr><th>Tu viens de...</th><th>Ton Miqat</th></tr>
+                                <tr><td>Jordanie, Syrie, Égypte, Maghreb</td><td><strong>Al-Juhfa (Rabigh)</strong></td></tr>
+                                <tr><td>Yémen, Indonésie</td><td><strong>Yalamlam</strong></td></tr>
+                                <tr><td>Émirats, Koweït, Najd</td><td><strong>Qarn Al-Manazil</strong></td></tr>
+                                <tr><td>Irak</td><td><strong>Dhat Irq</strong></td></tr>
+                            </table>
+                            <div class="tuto">
+                                <div class="tuto-label">Ce que tu fais</div>
+                                <div class="action">
+                                    <p><strong>1.</strong> T'arrêter au Miqat (mosquées et douches disponibles)</p>
+                                    <p><strong>2.</strong> Faire le Ghusl, te parfumer, mettre l'Ihram</p>
+                                    <p><strong>3.</strong> Prier 2 rakaats (recommandé)</p>
+                                    <p><strong>4.</strong> Formuler l'intention et reprendre la route</p>
+                                </div>
+                                <div class="invocation">
+                                    <div class="invocation-label">Dire</div>
+                                    <div class="arabe">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</div>
+                                    <div class="phonetique">LABBAYKA ALLAHUMMA 'UMRATAN</div>
+                                    <div class="trad">« Je réponds à Ton appel, Ô Allah, par une 'Omra. »</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CAS 4 : RÉSIDENT JEDDAH -->
+                        <div class="cas-content cc4">
+                            <div class="contexte">
+                                <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">Chez toi, à Jeddah</span></div>
+                                <div class="contexte-row"><span class="contexte-label">MIQAT</span><span class="contexte-value">Ton domicile (tu es entre les Miqat)</span></div>
+                            </div>
+                            <div class="tuto">
+                                <div class="tuto-label">Ce que tu fais</div>
+                                <div class="action">
+                                    <p><strong>1.</strong> Ghusl, parfum, Ihram — chez toi</p>
+                                    <p><strong>2.</strong> Formuler l'intention depuis chez toi</p>
+                                    <p><strong>3.</strong> Te rendre à La Mecque (~85 km)</p>
+                                </div>
+                                <div class="invocation">
+                                    <div class="invocation-label">Dire</div>
+                                    <div class="arabe">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</div>
+                                    <div class="phonetique">LABBAYKA ALLAHUMMA 'UMRATAN</div>
+                                    <div class="trad">« Je réponds à Ton appel, Ô Allah, par une 'Omra. »</div>
+                                </div>
+                            </div>
+                            <div class="note">Tu n'as pas besoin de te rendre à un Miqat externe car tu habites déjà dans la zone.</div>
+                        </div>
+
+                        <!-- CAS 5 : RÉSIDENT MECQUE -->
+                        <div class="cas-content cc5">
+                            <div class="contexte">
+                                <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">Masjid Aicha (At-Tan'im)</span></div>
+                                <div class="contexte-row"><span class="contexte-label">DISTANCE</span><span class="contexte-value">~7 km du Haram</span></div>
+                                <div class="contexte-row"><span class="contexte-label">POURQUOI</span><span class="contexte-value">Tu dois SORTIR de la zone du Haram</span></div>
+                            </div>
+                            <div class="tuto">
+                                <div class="tuto-label">Ce que tu fais</div>
+                                <div class="action">
+                                    <p><strong>1.</strong> Prendre un taxi vers <strong>Masjid Aicha</strong> (At-Tan'im)</p>
+                                    <p><strong>2.</strong> Te changer en Ihram, prier 2 rakaats</p>
+                                    <p><strong>3.</strong> Formuler l'intention et revenir au Haram</p>
+                                </div>
+                                <div class="invocation">
+                                    <div class="invocation-label">Dire</div>
+                                    <div class="arabe">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</div>
+                                    <div class="phonetique">LABBAYKA ALLAHUMMA 'UMRATAN</div>
+                                    <div class="trad">« Je réponds à Ton appel, Ô Allah, par une 'Omra. »</div>
+                                </div>
+                            </div>
+                            <div class="note">C'est le Miqat le plus proche de La Mecque — pratique si tu veux faire plusieurs 'Omra.</div>
+                        </div>
+                    </div>
+
+                    <!-- Interdits de l'Ihram -->
+                    <div class="dalil">
+                        <div class="dalil-label">Les interdits de l'Ihram</div>
+                        <table class="tableau">
+                            <tr><th>Interdit</th><th>Homme</th><th>Femme</th></tr>
+                            <tr><td>Se parfumer (après Ihram)</td><td>❌</td><td>❌</td></tr>
+                            <tr><td>Se couper les ongles</td><td>❌</td><td>❌</td></tr>
+                            <tr><td>Se raser / s'épiler</td><td>❌</td><td>❌</td></tr>
+                            <tr><td>Rapports conjugaux</td><td>❌</td><td>❌</td></tr>
+                            <tr><td>Se couvrir la tête</td><td>❌</td><td>✅</td></tr>
+                            <tr><td>Vêtements cousus</td><td>❌</td><td>✅</td></tr>
+                            <tr><td>Niqab (voile du visage)</td><td>—</td><td>❌</td></tr>
+                            <tr><td>Gants</td><td>—</td><td>❌</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     ÉTAPE 2 : TALBIYA
+                ========================================== -->
+                <div class="etape-content ec2">
+                    <div class="etape-titre">
+                        <span class="etape-numero">2</span>
+                        La Talbiya — Sur le trajet
+                    </div>
+
+                    <input type="radio" name="tal" id="tal1" checked>
+                    <input type="radio" name="tal" id="tal2">
+                    <input type="radio" name="tal" id="tal3">
+
+                    <div class="tal-wrap">
+                        <div class="tal-selector">
+                            <p class="selector-title">Ta situation de transport ?</p>
+                            <div class="tal-options">
+                                <label for="tal1">
+                                    <span class="option-icon plane"></span>
+                                    <span class="label-text">En avion</span>
+                                </label>
+                                <label for="tal2">
+                                    <span class="option-icon car"></span>
+                                    <span class="label-text">Voiture / Bus</span>
+                                </label>
+                                <label for="tal3">
+                                    <span class="option-icon walk"></span>
+                                    <span class="label-text">À pied / Taxi</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- TALBIYA EN AVION -->
+                        <div class="tal-content tc1">
+                            <div class="contexte">
+                                <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">Dans l'avion, puis partout</span></div>
+                                <div class="contexte-row"><span class="contexte-label">QUAND</span><span class="contexte-value">Du Miqat jusqu'à toucher la Pierre Noire</span></div>
+                                <div class="contexte-row"><span class="contexte-label">COMMENT</span><span class="contexte-value">À voix BASSE dans l'avion (par respect)</span></div>
+                            </div>
+                            <div class="tuto">
+                                <div class="tuto-label">Ce que tu fais</div>
+                                <div class="action">
+                                    <p>Après avoir formulé l'intention au Miqat, <strong>commence la Talbiya</strong>.</p>
+                                    <p>Dans l'avion : récite à <strong>voix basse</strong> (murmure) — l'intention compte.</p>
+                                    <p>Continue après l'atterrissage, dans le taxi, jusqu'à l'entrée dans le Haram.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TALBIYA EN VOITURE -->
+                        <div class="tal-content tc2">
+                            <div class="contexte">
+                                <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">Dans le véhicule, tout au long du trajet</span></div>
+                                <div class="contexte-row"><span class="contexte-label">COMMENT</span><span class="contexte-value">Hommes : VOIX HAUTE — Femmes : voix basse</span></div>
+                            </div>
+                            <div class="tuto">
+                                <div class="tuto-label">Ce que tu fais</div>
+                                <div class="action">
+                                    <p><strong>Répéter sans cesse</strong> la Talbiya :</p>
+                                    <ul>
+                                        <li>À chaque montée / descente de terrain</li>
+                                        <li>Après chaque prière</li>
+                                        <li>En groupe si possible — c'est magnifique</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TALBIYA À PIED -->
+                        <div class="tal-content tc3">
+                            <div class="contexte">
+                                <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">En marchant vers le Haram</span></div>
+                                <div class="contexte-row"><span class="contexte-label">ÉMOTION</span><span class="contexte-value">Tu réponds à l'appel d'Allah — ressens-le !</span></div>
+                            </div>
+                            <div class="tuto">
+                                <div class="tuto-label">Ce que tu fais</div>
+                                <div class="action">
+                                    <p><strong>Répéter</strong> la Talbiya en marchant vers le Haram.</p>
+                                    <p>C'est le moment de ressentir l'émotion — tu réponds à l'appel d'Ibrahim عليه السلام !</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Invocation commune -->
+                        <div class="invocation" style="margin-top: 25px;">
+                            <div class="invocation-label">Répéter sans cesse</div>
+                            <div class="arabe">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ</div>
+                            <div class="phonetique">LABBAYKA ALLAHUMMA LABBAYK, LABBAYKA LA SHARIKA LAKA LABBAYK, INNA AL-HAMDA WAN-NI'MATA LAKA WAL-MULK, LA SHARIKA LAK</div>
+                            <div class="trad">« Je réponds à Ton appel, Ô Allah. Tu n'as point d'associé. La Louange, le Bienfait et la Royauté T'appartiennent. Tu n'as point d'associé. »</div>
+                        </div>
+
+                        <div class="warning"><strong>ARRÊTER</strong> la Talbiya au moment de toucher/saluer la Pierre Noire pour commencer le Tawaf.</div>
+                    </div>
+
+                    <div class="dalil">
+                        <div class="dalil-label">Preuve</div>
+                        <div class="preuve">
+                            <div class="preuve-type">Hadith — Élever la voix</div>
+                            <p><strong>Abu Bakr As-Siddiq رضي الله عنه</strong> rapporte :</p>
+                            <div class="trad" style="font-style: italic;">« On demanda au Prophète ﷺ : 'Quel est le meilleur Hajj ?' Il dit : 'Al-'Ajj wal-Thajj' (Élever la voix dans la Talbiya et verser le sang du sacrifice). »</div>
+                            <div class="ref"><strong>Sunan At-Tirmidhi (827) — Hasan</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     ÉTAPE 3 : ENTRÉE MOSQUÉE
+                ========================================== -->
+                <div class="etape-content ec3">
+                    <div class="etape-titre">
+                        <span class="etape-numero">3</span>
+                        Entrée dans la Mosquée
+                    </div>
+                    <div class="contexte">
+                        <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">N'importe quelle porte du Masjid Al-Haram</span></div>
+                        <div class="contexte-row"><span class="contexte-label">COMMENT</span><span class="contexte-value">Pied DROIT en premier</span></div>
+                    </div>
+                    <div class="tuto">
+                        <div class="tuto-label">Ce que tu fais</div>
+                        <div class="action"><p>Entrer du <strong>pied droit</strong> — c'est la Sunna pour entrer dans toute mosquée.</p></div>
+                        <div class="invocation">
+                            <div class="invocation-label">Dire</div>
+                            <div class="arabe">بِسْمِ اللهِ، وَالصَّلاَةُ وَالسَّلاَمُ عَلَى رَسُولِ اللهِ، اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ</div>
+                            <div class="phonetique">BISMILLAH, WAS-SALATU WAS-SALAMU 'ALA RASULILLAH, ALLAHUMMA IFTAH LI ABWABA RAHMATIK</div>
+                            <div class="trad">« Au nom d'Allah, que la prière et le salut soient sur le Messager d'Allah. Ô Allah, ouvre-moi les portes de Ta miséricorde. »</div>
+                        </div>
+                    </div>
+                    <div class="note">Pas besoin d'entrer par Bab As-Salam ou une porte spécifique — toutes les portes sont équivalentes.</div>
+                </div>
+
+                <!-- ==========================================
+                     ÉTAPE 4 : KAABA
+                ========================================== -->
+                <div class="etape-content ec4">
+                    <div class="etape-titre">
+                        <span class="etape-numero">4</span>
+                        À la vue de la Kaaba
+                    </div>
+                    <div class="contexte">
+                        <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">Premier regard sur la Kaaba</span></div>
+                        <div class="contexte-row"><span class="contexte-label">MOMENT</span><span class="contexte-value">Unique — les invocations sont EXAUCÉES</span></div>
+                    </div>
+                    <div class="tuto">
+                        <div class="tuto-label">Ce que tu fais</div>
+                        <div class="action">
+                            <p><strong>Lever les mains</strong> vers le ciel.</p>
+                            <p>C'est un <strong>moment d'exaucement</strong> — fais TOUTES tes invocations !</p>
+                            <p>Invoque pour ta famille, ta santé, ton pardon, tes projets, tes proches...</p>
+                        </div>
+                        <div class="invocation">
+                            <div class="invocation-label">Dire</div>
+                            <div class="arabe">اللَّهُمَّ أَنْتَ السَّلاَمُ وَمِنْكَ السَّلاَمُ، فَحَيِّنَا رَبَّنَا بِالسَّلاَمِ</div>
+                            <div class="phonetique">ALLAHUMMA ANTA AS-SALAM WA MINKA AS-SALAM, FA HAYYINA RABBANA BIS-SALAM</div>
+                            <div class="trad">« Ô Allah, Tu es la Paix et de Toi vient la paix. Fais-nous vivre en paix, Ô notre Seigneur. »</div>
+                        </div>
+                    </div>
+                    <div class="success"><strong>Profite de ce moment !</strong> C'est l'un des moments où les du'as sont acceptées. Ne le gaspille pas.</div>
+                </div>
+
+                <!-- ==========================================
+                     ÉTAPE 5 : TAWAF
+                ========================================== -->
+                <div class="etape-content ec5">
+                    <div class="etape-titre">
+                        <span class="etape-numero">5</span>
+                        Le Tawaf — 7 tours
+                    </div>
+                    <div class="contexte">
+                        <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">Autour de la Kaaba</span></div>
+                        <div class="contexte-row"><span class="contexte-label">DURÉE</span><span class="contexte-value">30 min à 2h selon la foule</span></div>
+                        <div class="contexte-row"><span class="contexte-label">ABLUTIONS</span><span class="contexte-value">OBLIGATOIRES</span></div>
+                    </div>
+                    <div class="tuto">
+                        <div class="tuto-label">AVANT de commencer</div>
+                        <div class="action">
+                            <ul>
+                                <li>Vérifier tes <strong>ablutions</strong> — OBLIGATOIRE pour le Tawaf</li>
+                                <li><strong>Hommes — Idtiba :</strong> Découvrir l'épaule droite (passer le Rida sous l'aisselle droite)</li>
+                                <li><strong>Arrêter</strong> la Talbiya</li>
+                            </ul>
+                        </div>
+
+                        <div class="tuto-label">À chaque passage devant la Pierre Noire</div>
+                        <div class="action">
+                            <p>Se placer <strong>face à la Pierre Noire</strong> (ligne verte au sol).</p>
+                            <p>Lever la main droite vers elle et dire :</p>
+                        </div>
+                        <div class="invocation">
+                            <div class="invocation-label">Dire</div>
+                            <div class="arabe">بِسْمِ اللهِ، وَاللهُ أَكْبَرُ</div>
+                            <div class="phonetique">BISMILLAH, WALLAHU AKBAR</div>
+                            <div class="trad">« Au nom d'Allah, Allah est le plus Grand. »</div>
+                        </div>
+
+                        <div class="tuto-label">Pendant les tours</div>
+                        <div class="action">
+                            <ul>
+                                <li><strong>Tourner</strong> dans le sens inverse des aiguilles d'une montre (Kaaba à ta gauche)</li>
+                                <li><strong>Hommes — Raml :</strong> Marche rapide (petits pas pressés) les 3 premiers tours</li>
+                                <li><strong>NE PAS</strong> passer dans le Hijr Isma'il (la partie semi-circulaire) — elle fait partie de la Kaaba !</li>
+                                <li>Invoquer librement — il n'y a pas d'invocation obligatoire pendant les tours</li>
+                            </ul>
+                        </div>
+
+                        <div class="tuto-label">Entre le Coin Yéménite et la Pierre Noire (chaque tour)</div>
+                        <div class="invocation">
+                            <div class="invocation-label">Dire</div>
+                            <div class="arabe">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+                            <div class="phonetique">RABBANA ATINA FID-DUNYA HASANATAN WA FIL-AKHIRATI HASANATAN WA QINA 'ADHABAN-NAR</div>
+                            <div class="trad">« Notre Seigneur, accorde-nous une belle part ici-bas et dans l'au-delà, et protège-nous du châtiment du Feu. »</div>
+                        </div>
+
+                        <div class="tuto-label">Après le 7ème tour</div>
+                        <div class="action"><p><strong>Recouvrir</strong> l'épaule droite. Se diriger vers le Maqam Ibrahim.</p></div>
+                    </div>
+
+                    <div class="warning">Si tu perds tes ablutions pendant le Tawaf → arrête, refais tes ablutions, et reprends où tu en étais.</div>
+                </div>
+
+                <!-- ==========================================
+                     ÉTAPE 6 : MAQAM
+                ========================================== -->
+                <div class="etape-content ec6">
+                    <div class="etape-titre">
+                        <span class="etape-numero">6</span>
+                        Prière au Maqam Ibrahim
+                    </div>
+                    <div class="contexte">
+                        <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">Derrière le Maqam Ibrahim (ou ailleurs si foule)</span></div>
+                        <div class="contexte-row"><span class="contexte-label">QUAND</span><span class="contexte-value">Immédiatement après le Tawaf</span></div>
+                    </div>
+                    <div class="tuto">
+                        <div class="tuto-label">En s'approchant du Maqam</div>
+                        <div class="invocation">
+                            <div class="invocation-label">Réciter</div>
+                            <div class="arabe">وَاتَّخِذُوا مِن مَّقَامِ إِبْرَاهِيمَ مُصَلًّى</div>
+                            <div class="phonetique">WATTAKHIDHU MIN MAQAMI IBRAHIMA MUSALLA</div>
+                            <div class="trad">« Et prenez le Maqam d'Ibrahim comme lieu de prière. » (Sourate Al-Baqara, 2:125)</div>
+                        </div>
+
+                        <div class="tuto-label">Ce que tu fais</div>
+                        <div class="action">
+                            <p>Prier <strong>2 rakaats</strong> (courtes) :</p>
+                            <ul>
+                                <li>1ère raka'a : Al-Fatiha + <strong>Al-Kafiroun</strong> (Sourate 109)</li>
+                                <li>2ème raka'a : Al-Fatiha + <strong>Al-Ikhlas</strong> (Sourate 112)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="note">Si la zone est bondée, tu peux prier n'importe où dans la mosquée — l'important est de prier ces 2 rakaats après le Tawaf.</div>
+                </div>
+
+                <!-- ==========================================
+                     ÉTAPE 7 : ZAMZAM
+                ========================================== -->
+                <div class="etape-content ec7">
+                    <div class="etape-titre">
+                        <span class="etape-numero">7</span>
+                        Boire Zamzam
+                    </div>
+                    <div class="contexte">
+                        <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">Aux distributeurs dans la mosquée</span></div>
+                        <div class="contexte-row"><span class="contexte-label">QUAND</span><span class="contexte-value">Après la prière du Maqam, avant le Sa'i</span></div>
+                    </div>
+                    <div class="tuto">
+                        <div class="tuto-label">Ce que tu fais</div>
+                        <div class="action">
+                            <ul>
+                                <li>Dire <strong>Bismillah</strong></li>
+                                <li>Boire <strong>debout</strong>, face à la Qibla (recommandé)</li>
+                                <li>Boire en <strong>3 gorgées</strong></li>
+                                <li>Invoquer pour ce que tu veux — c'est le moment !</li>
+                                <li>Dire <strong>Alhamdulillah</strong></li>
+                            </ul>
+                        </div>
+                        <div class="invocation">
+                            <div class="invocation-label">Invoquer</div>
+                            <div class="arabe">اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا وَاسِعًا، وَشِفَاءً مِنْ كُلِّ دَاءٍ</div>
+                            <div class="phonetique">ALLAHUMMA INNI AS'ALUKA 'ILMAN NAFI'AN, WA RIZQAN WASI'AN, WA SHIFA'AN MIN KULLI DA'</div>
+                            <div class="trad">« Ô Allah, je Te demande une science bénéfique, une subsistance abondante, et la guérison de toute maladie. »</div>
+                        </div>
+                    </div>
+                    <div class="success"><strong>L'eau de Zamzam est pour ce pourquoi elle est bue.</strong> Invoque pour TOUT ce que tu veux : guérison, richesse, pardon, guidée, famille...</div>
+
+                    <div class="dalil">
+                        <div class="dalil-label">Preuve</div>
+                        <div class="preuve">
+                            <div class="preuve-type">Hadith</div>
+                            <p><strong>Jabir رضي الله عنه</strong> rapporte que le Prophète ﷺ a dit :</p>
+                            <div class="trad" style="font-style: italic;">« L'eau de Zamzam est pour ce pourquoi elle est bue. »</div>
+                            <div class="ref"><strong>Sunan Ibn Majah (3062) — Hasan</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ==========================================
+                     ÉTAPE 8 : SA'I
+                ========================================== -->
+                <div class="etape-content ec8">
+                    <div class="etape-titre">
+                        <span class="etape-numero">8</span>
+                        Le Sa'i — Safa et Marwa
+                    </div>
+                    <div class="contexte">
+                        <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">Le Mas'a (couloir entre Safa et Marwa)</span></div>
+                        <div class="contexte-row"><span class="contexte-label">DURÉE</span><span class="contexte-value">30 min à 1h30</span></div>
+                        <div class="contexte-row"><span class="contexte-label">ABLUTIONS</span><span class="contexte-value">Non obligatoires (mais recommandées)</span></div>
+                        <div class="contexte-row"><span class="contexte-label">PARCOURS</span><span class="contexte-value">7 trajets : Safa→Marwa (1), Marwa→Safa (2)... fin à Marwa</span></div>
+                    </div>
+                    
+                    <div class="tuto">
+                        <div class="tuto-label">En approchant de Safa (une seule fois, au début)</div>
+                        <div class="invocation">
+                            <div class="invocation-label">Réciter</div>
+                            <div class="arabe">إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَآئِرِ اللَّهِ</div>
+                            <div class="phonetique">INNA AS-SAFA WAL-MARWATA MIN SHA'A'IRILLAH</div>
+                            <div class="trad">« Certes, As-Safa et Al-Marwa font partie des rites d'Allah. » (Sourate Al-Baqara, 2:158)</div>
+                        </div>
+                        <div class="invocation">
+                            <div class="invocation-label">Puis dire</div>
+                            <div class="arabe">أَبْدَأُ بِمَا بَدَأَ اللهُ بِهِ</div>
+                            <div class="phonetique">ABDA'U BIMA BADA'ALLAHU BIHI</div>
+                            <div class="trad">« Je commence par ce par quoi Allah a commencé. »</div>
+                        </div>
+
+                        <div class="tuto-label">Sur Safa (et sur Marwa) — À répéter 3 FOIS</div>
+                        <div class="action">
+                            <ul>
+                                <li>Monter jusqu'à <strong>voir la Kaaba</strong> (ou se tourner vers elle)</li>
+                                <li>Se tourner vers la <strong>Qibla</strong></li>
+                                <li><strong>Lever les mains</strong></li>
+                                <li>Dire <strong>Allahou Akbar</strong> (3 fois)</li>
+                                <li>Réciter la formule du Tawhid ci-dessous</li>
+                                <li>Faire des <strong>invocations libres</strong> (du'a personnelles)</li>
+                                <li>Répéter le tout <strong>3 fois</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="invocation">
+                            <div class="invocation-label">Dire 3 fois (avec invocations libres entre chaque)</div>
+                            <div class="arabe">اللهُ أَكْبَرُ، اللهُ أَكْبَرُ، اللهُ أَكْبَرُ — لاَ إِلَهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، لاَ إِلَهَ إِلاَّ اللهُ وَحْدَهُ، أَنْجَزَ وَعْدَهُ، وَنَصَرَ عَبْدَهُ، وَهَزَمَ الْأَحْزَابَ وَحْدَهُ</div>
+                            <div class="phonetique">ALLAHU AKBAR, ALLAHU AKBAR, ALLAHU AKBAR — LA ILAHA ILLALLAHU WAHDAHU LA SHARIKA LAH, LAHUL-MULKU WA LAHUL-HAMD, WA HUWA 'ALA KULLI SHAY'IN QADIR. LA ILAHA ILLALLAHU WAHDAH, ANJAZA WA'DAH, WA NASARA 'ABDAH, WA HAZAMAL-AHZABA WAHDAH</div>
+                            <div class="trad">« Allah est le plus Grand (3x). Il n'y a de divinité qu'Allah, Seul, sans associé. À Lui la royauté et la louange. Il est capable de toute chose. Il n'y a de divinité qu'Allah, Seul. Il a tenu Sa promesse, secouru Son serviteur, et vaincu les coalisés Seul. »</div>
+                        </div>
+
+                        <div class="tuto-label">Entre les bornes vertes (lumières vertes)</div>
+                        <div class="action">
+                            <ul>
+                                <li><strong>Hommes :</strong> Accélérer le pas / courir légèrement</li>
+                                <li><strong>Femmes :</strong> Marcher normalement</li>
+                            </ul>
+                        </div>
+                        <div class="invocation">
+                            <div class="invocation-label">Dire (recommandé)</div>
+                            <div class="arabe">رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ</div>
+                            <div class="phonetique">RABBIGHFIR WARHAM, INNAKA ANTAL-A'AZZUL-AKRAM</div>
+                            <div class="trad">« Seigneur, pardonne et fais miséricorde. Tu es le Plus Puissant, le Plus Noble. »</div>
+                        </div>
+
+                        <div class="tuto-label">Comptage des 7 parcours</div>
+                        <div class="action">
+                            <p><strong>Safa → Marwa</strong> = 1er parcours</p>
+                            <p><strong>Marwa → Safa</strong> = 2ème parcours</p>
+                            <p>... et ainsi de suite jusqu'au <strong>7ème parcours qui se termine à Marwa</strong>.</p>
+                        </div>
+                    </div>
+
+                    <div class="dalil">
+                        <div class="dalil-label">Preuve</div>
+                        <div class="preuve">
+                            <div class="preuve-type">Hadith — Sahih Muslim (1218)</div>
+                            <p><strong>Jabir رضي الله عنه</strong> rapporte :</p>
+                            <div class="trad" style="font-style: italic;">« Le Prophète ﷺ monta sur Safa jusqu'à voir la Maison (Kaaba), se tourna vers la Qibla, proclama l'Unicité d'Allah et Le glorifia, et dit : 'La ilaha illa Allah...' Puis il invoqua entre cela. Il fit cela trois fois. »</div>
+                            <div class="ref"><strong>Sahih Muslim (1218)</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     ÉTAPE 9 : HALQ
+                ========================================== -->
+                <div class="etape-content ec9">
+                    <div class="etape-titre">
+                        <span class="etape-numero">9</span>
+                        Halq ou Taqsir — Désacralisation
+                    </div>
+                    <div class="contexte">
+                        <div class="contexte-row"><span class="contexte-label">OÙ</span><span class="contexte-value">Coiffeurs près du Haram (~10-20 SAR)</span></div>
+                        <div class="contexte-row"><span class="contexte-label">QUAND</span><span class="contexte-value">Immédiatement après le Sa'i</span></div>
+                    </div>
+                    <div class="tuto">
+                        <div class="tuto-label">Ce que tu fais</div>
+                        <div class="action">
+                            <p><strong>Hommes :</strong></p>
+                            <ul>
+                                <li><strong>Halq</strong> (se raser la tête) — PRÉFÉRABLE, plus de récompenses</li>
+                                <li><strong>Taqsir</strong> (raccourcir les cheveux) — Permis</li>
+                            </ul>
+                            <p style="margin-top: 15px;"><strong>Femmes :</strong></p>
+                            <ul>
+                                <li>Couper l'équivalent d'une <strong>phalange</strong> (~2-3 cm) des pointes</li>
+                                <li><strong>JAMAIS</strong> de rasage pour les femmes</li>
+                            </ul>
+                        </div>
+                        <div class="invocation">
+                            <div class="invocation-label">Dire (3 fois)</div>
+                            <div class="arabe">اللَّهُمَّ اغْفِرْ لِلْمُحَلِّقِينَ</div>
+                            <div class="phonetique">ALLAHUMMAGHFIR LIL-MUHALLIQIN</div>
+                            <div class="trad">« Ô Allah, pardonne à ceux qui se rasent. »</div>
+                        </div>
+                        <div class="invocation">
+                            <div class="invocation-label">Puis dire (1 fois)</div>
+                            <div class="arabe">وَالْمُقَصِّرِينَ</div>
+                            <div class="phonetique">WAL-MUQASSIRIN</div>
+                            <div class="trad">« Et à ceux qui raccourcissent. »</div>
+                        </div>
+                    </div>
+
+                    <div class="success" style="font-size: 1.05rem; padding: 22px;">
+                        <div>
+                            <strong>FÉLICITATIONS ! TA 'OMRA EST TERMINÉE !</strong><br><br>
+                            Tous les interdits de l'Ihram sont maintenant levés.<br>
+                            Tu peux te rhabiller normalement, te parfumer, etc.<br><br>
+                            <em>Qu'Allah accepte ta 'Omra ! تَقَبَّلَ اللهُ</em>
+                        </div>
+                    </div>
+
+                    <div class="dalil">
+                        <div class="dalil-label">Preuve</div>
+                        <div class="preuve">
+                            <div class="preuve-type">Hadith</div>
+                            <p><strong>Ibn 'Umar رضي الله عنهما</strong> rapporte :</p>
+                            <div class="trad" style="font-style: italic;">« Le Prophète ﷺ dit : 'Ô Allah, fais miséricorde à ceux qui se rasent.' Ils dirent : 'Et ceux qui raccourcissent, ô Messager d'Allah ?' Il dit : 'Ô Allah, fais miséricorde à ceux qui se rasent.' Ils dirent : 'Et ceux qui raccourcissent ?' Il dit (à la troisième fois) : 'Et ceux qui raccourcissent.' »</div>
+                            <div class="ref"><strong>Sahih Al-Bukhari (1727), Sahih Muslim (1301)</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     ÉTAPE 10 : SORTIE
+                ========================================== -->
+                <div class="etape-content ec10">
+                    <div class="etape-titre">
+                        <span class="etape-numero">10</span>
+                        Sortie de la Mosquée
+                    </div>
+                    <div class="contexte">
+                        <div class="contexte-row"><span class="contexte-label">COMMENT</span><span class="contexte-value">Pied GAUCHE en premier</span></div>
+                    </div>
+                    <div class="tuto">
+                        <div class="tuto-label">Ce que tu fais</div>
+                        <div class="action"><p>Sortir du <strong>pied gauche</strong> — c'est la Sunna pour sortir de toute mosquée.</p></div>
+                        <div class="invocation">
+                            <div class="invocation-label">Dire</div>
+                            <div class="arabe">بِسْمِ اللهِ، وَالصَّلاَةُ وَالسَّلاَمُ عَلَى رَسُولِ اللهِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ</div>
+                            <div class="phonetique">BISMILLAH, WAS-SALATU WAS-SALAMU 'ALA RASULILLAH, ALLAHUMMA INNI AS'ALUKA MIN FADLIK</div>
+                            <div class="trad">« Au nom d'Allah, que la prière et le salut soient sur le Messager d'Allah. Ô Allah, je Te demande de Ta grâce. »</div>
+                        </div>
+                    </div>
+                    <div class="note">La différence avec l'entrée : à l'entrée on demande la <strong>miséricorde</strong> (Rahma), à la sortie on demande la <strong>grâce</strong> (Fadl) — car on sort pour chercher sa subsistance.</div>
+                </div>
+
+                <!-- ==========================================
+                     ÉTAPE 11 : BANQUE D'INVOCATIONS
+                ========================================== -->
+                <div class="etape-content ec11">
+                    <div class="etape-titre">
+                        <span class="etape-numero">✦</span>
+                        Banque d'Invocations Coraniques
+                    </div>
+
+                    <div class="duaa-intro">
+                        <h3>Les meilleurs moments pour invoquer</h3>
+                        <ul>
+                            <li>À la <strong>première vue de la Kaaba</strong></li>
+                            <li>Pendant le <strong>Tawaf</strong> (surtout entre le Coin Yéménite et la Pierre Noire)</li>
+                            <li>Après les <strong>2 rakaats</strong> du Maqam Ibrahim</li>
+                            <li>En buvant <strong>Zamzam</strong></li>
+                            <li>Sur <strong>Safa et Marwa</strong> (entre les 3 répétitions)</li>
+                            <li>Au <strong>dernier tiers de la nuit</strong></li>
+                            <li>Après les <strong>prières obligatoires</strong></li>
+                            <li>Le jour de <strong>'Arafa</strong> (pour le Hajj)</li>
+                        </ul>
+                    </div>
+
+                    <!-- PARDON -->
+                    <div class="duaa-category">
+                        <div class="duaa-category-title">Pardon et Miséricorde</div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ</div>
+                            <div class="trad">« Ô notre Seigneur, nous nous sommes fait du tort à nous-mêmes. Et si Tu ne nous pardonnes pas et ne nous fais pas miséricorde, nous serons certainement du nombre des perdants. »</div>
+                            <div class="ref"><strong>Sourate Al-A'raf, 7:23</strong> — Invocation d'Adam عليه السلام</div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا إِنَّنَا آمَنَّا فَاغْفِرْ لَنَا ذُنُوبَنَا وَقِنَا عَذَابَ النَّارِ</div>
+                            <div class="trad">« Ô notre Seigneur ! Nous avons la foi ; pardonne-nous donc nos péchés, et protège-nous du châtiment du Feu. »</div>
+                            <div class="ref"><strong>Sourate Al-'Imran, 3:16</strong></div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا لاَ تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا ۚ رَبَّنَا وَلاَ تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِن قَبْلِنَا ۚ رَبَّنَا وَلاَ تُحَمِّلْنَا مَا لاَ طَاقَةَ لَنَا بِهِ ۖ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا ۚ أَنتَ مَوْلاَنَا فَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ</div>
+                            <div class="trad">« Seigneur, ne nous châtie pas s'il nous arrive d'oublier ou de commettre une erreur. Seigneur ! Ne nous charge pas d'un fardeau lourd comme Tu as chargé ceux qui vécurent avant nous. Seigneur ! Ne nous impose pas ce que nous ne pouvons supporter, efface nos fautes, pardonne-nous et fais nous miséricorde. Tu es notre Maître, accorde-nous donc la victoire sur les peuples infidèles. »</div>
+                            <div class="ref"><strong>Sourate Al-Baqara, 2:286</strong></div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي</div>
+                            <div class="trad">« Ô Allah, Tu es Celui qui pardonne, Tu aimes le pardon, alors pardonne-moi. »</div>
+                            <div class="ref"><strong>Hadith — Sunan At-Tirmidhi</strong> — À réciter les nuits de Ramadan</div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبِّ إِنِّي ظَلَمْتُ نَفْسِي فَاغْفِرْ لِي</div>
+                            <div class="trad">« Seigneur, je me suis fait du tort à moi-même. Pardonne-moi. »</div>
+                            <div class="ref"><strong>Sourate Al-Qasas, 28:16</strong> — Invocation de Moussa عليه السلام</div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَّبِّ اغْفِرْ وَارْحَمْ وَأَنتَ خَيْرُ الرَّاحِمِينَ</div>
+                            <div class="trad">« Seigneur, pardonne et fais miséricorde. C'est Toi le Meilleur des miséricordieux. »</div>
+                            <div class="ref"><strong>Sourate Al-Mu'minun, 23:118</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- PARENTS ET FAMILLE -->
+                    <div class="duaa-category">
+                        <div class="duaa-category-title">Parents, Famille et Descendance</div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَّبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا</div>
+                            <div class="trad">« Ô mon Seigneur, fais-leur miséricorde comme ils m'ont élevé tout petit. »</div>
+                            <div class="ref"><strong>Sourate Al-Isra, 17:24</strong></div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ</div>
+                            <div class="trad">« Ô notre Seigneur ! Pardonne-moi, ainsi qu'à mes parents et aux croyants, le Jour de la reddition des comptes. »</div>
+                            <div class="ref"><strong>Sourate Ibrahim, 14:41</strong> — Invocation d'Ibrahim عليه السلام</div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبِّ هَبْ لِي مِن لَدُنْكَ ذُرِّيِّةً طَيِّبَةً ۖ إِنَّكَ سَمِيعُ الدُّعَاءِ</div>
+                            <div class="trad">« Ô mon Seigneur, donne-moi, venant de Toi, une excellente descendance. Car Tu es Celui qui entend bien la prière. »</div>
+                            <div class="ref"><strong>Sourate Al-'Imran, 3:38</strong> — Invocation de Zakariya عليه السلام</div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا</div>
+                            <div class="trad">« Seigneur, donne-nous, en nos épouses et nos descendants, la joie des yeux, et fais de nous un guide pour les pieux. »</div>
+                            <div class="ref"><strong>Sourate Al-Furqan, 25:74</strong></div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَىٰ وَالِدَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ وَأَصْلِحْ لِي فِي ذُرِّيَّتِي ۖ إِنِّي تُبْتُ إِلَيْكَ وَإِنِّي مِنَ الْمُسْلِمِينَ</div>
+                            <div class="trad">« Ô Seigneur ! Permets-moi de rendre grâce au bienfait dont Tu m'as comblé, ainsi qu'à mes parents, et pour que je fasse une bonne œuvre que Tu agrées. Et fais que ma descendance soit de moralité saine. Je me repens à Toi et je suis du nombre des soumis. »</div>
+                            <div class="ref"><strong>Sourate Al-Ahqaf, 46:15</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- FOI ET GUIDÉE -->
+                    <div class="duaa-category">
+                        <div class="duaa-category-title">Guidée, Foi et Fermeté</div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا لاَ تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ الْوَهَّابُ</div>
+                            <div class="trad">« Seigneur ! Ne fais pas dévier nos cœurs après que Tu nous aies guidés ; et accorde-nous Ta miséricorde. C'est Toi, certes, le Grand Donateur ! »</div>
+                            <div class="ref"><strong>Sourate Al-'Imran, 3:8</strong></div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا تَقَبَّلْ مِنَّا ۖ إِنَّكَ أَنتَ السَّمِيعُ العَلِيمُ</div>
+                            <div class="trad">« Ô notre Seigneur, accepte ceci de notre part ! Car c'est Toi certes l'Audient, l'Omniscient. »</div>
+                            <div class="ref"><strong>Sourate Al-Baqara, 2:127</strong> — Invocation d'Ibrahim عليه السلام</div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا عَلَيْكَ تَوَكَّلْنَا وَإِلَيْكَ أَنَبْنَا وَإِلَيْكَ الْمَصِيرُ</div>
+                            <div class="trad">« Seigneur, c'est en Toi que nous mettons notre confiance et à Toi nous revenons repentants. Et vers Toi est le devenir. »</div>
+                            <div class="ref"><strong>Sourate Al-Mumtahana, 60:4</strong></div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">حَسْبِيَ اللهُ لاَ إِلَهَ إِلاَّ هُوَ ۖ عَلَيْهِ تَوَكَّلْتُ ۖ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ</div>
+                            <div class="trad">« Allah me suffit. Il n'y a de divinité que Lui. En Lui je place ma confiance, et Il est le Seigneur du Trône immense. »</div>
+                            <div class="ref"><strong>Sourate At-Tawba, 9:129</strong> — À dire 7 fois matin et soir</div>
+                        </div>
+                    </div>
+
+                    <!-- PARADIS -->
+                    <div class="duaa-category">
+                        <div class="duaa-category-title">Paradis et Protection du Feu</div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+                            <div class="trad">« Seigneur ! Accorde-nous belle part ici-bas, et belle part aussi dans l'au-delà ; et protège-nous du châtiment du Feu ! »</div>
+                            <div class="ref"><strong>Sourate Al-Baqara, 2:201</strong> — L'invocation la plus récitée par le Prophète ﷺ</div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا اصْرِفْ عَنَّا عَذَابَ جَهَنَمَ ۖ إِنَّ عَذَابَهَا كَانَ غَرَامًا ۝ إِنَّهَا سَاءَتْ مُسْتَقَرًّا وَمُقَامًا</div>
+                            <div class="trad">« Seigneur ! Écarte de nous le châtiment de l'Enfer. Car son châtiment est permanent. Quel mauvais gîte et lieu de séjour ! »</div>
+                            <div class="ref"><strong>Sourate Al-Furqan, 25:65-66</strong></div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبِّ هَبْ لِي حُكْمًا وَأَلْحِقْنِي بِالصَّالِحِينَ ۝ وَاجْعَل لِي لِسَانَ صِدْقٍ فِي الآخِرِينَ ۝ وَاجْعَلْنِي مِن وَرَثَةِ جَنَّةِ النَّعِيمِ</div>
+                            <div class="trad">« Seigneur, accorde-moi sagesse et savoir et fais-moi rejoindre les gens de bien ; fais que j'aie une mention honorable parmi la postérité, et fais de moi l'un des héritiers du Jardin des Délices. »</div>
+                            <div class="ref"><strong>Sourate Ash-Shu'ara, 26:83-85</strong> — Invocation d'Ibrahim عليه السلام</div>
+                        </div>
+                    </div>
+
+                    <!-- BONNE FIN -->
+                    <div class="duaa-category">
+                        <div class="duaa-category-title">Bonne fin et Jour Dernier</div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا إِنَّنَا سَمِعْنَا مُنَادِيًا يُنَادِي لِلإِيمَانِ أَنْ آمِنُوا بِرَبِّكُمْ فَآمَنَّا ۚ رَبَّنَا فَاغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّئَاتِنَا وَتَوَفَّنَا مَعَ الأَبْرَارِ</div>
+                            <div class="trad">« Seigneur ! Nous avons entendu l'appel de celui qui a appelé à la foi. Seigneur, pardonne-nous nos péchés, efface de nous nos méfaits, et place-nous, à notre mort, avec les gens de bien. »</div>
+                            <div class="ref"><strong>Sourate Al-'Imran, 3:193</strong></div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا أَتْمِمْ لَنَا نُورَنَا وَاغْفِرْ لَنَا ۖ إِنَّكَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ</div>
+                            <div class="trad">« Seigneur, parfais-nous notre lumière et pardonne-nous. Car Tu es Omnipotent. »</div>
+                            <div class="ref"><strong>Sourate At-Tahrim, 66:8</strong></div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَتَوَفَّنَا مُسْلِمِينَ</div>
+                            <div class="trad">« Ô notre Seigneur ! Déverse sur nous l'endurance et fais-nous mourir entièrement soumis. »</div>
+                            <div class="ref"><strong>Sourate Al-A'raf, 7:126</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- SCIENCE -->
+                    <div class="duaa-category">
+                        <div class="duaa-category-title">Science et Sagesse</div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبِّ زِدْنِي عِلْمًا</div>
+                            <div class="trad">« Ô mon Seigneur, accroît mes connaissances. »</div>
+                            <div class="ref"><strong>Sourate Ta-Ha, 20:114</strong></div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبِّ اشْرَحْ لِي صَدْرِي ۝ وَيَسِّرْ لِي أَمْرِي ۝ وَاحْلُلْ عُقْدَةً مِنْ لِسَانِي ۝ يَفْقَهُوا قَوْلِي</div>
+                            <div class="trad">« Seigneur, ouvre-moi ma poitrine, et facilite ma mission, et dénoue un nœud en ma langue, afin qu'ils comprennent mes paroles. »</div>
+                            <div class="ref"><strong>Sourate Ta-Ha, 20:25-28</strong> — Invocation de Moussa عليه السلام</div>
+                        </div>
+                    </div>
+
+                    <!-- ENDURANCE -->
+                    <div class="duaa-category">
+                        <div class="duaa-category-title">Endurance et Protection</div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَثَبِّتْ أَقْدَامَنَا وَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ</div>
+                            <div class="trad">« Seigneur ! Déverse sur nous l'endurance, affermis nos pas et donne-nous la victoire sur ce peuple infidèle. »</div>
+                            <div class="ref"><strong>Sourate Al-Baqara, 2:250</strong></div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبِّ أَعُوذُ بِكَ مِنْ هَمَزَاتِ الشَّيَاطِينِ ۝ وَأَعُوذُ بِكَ رَبِّ أَن يَحْضُرُونِ</div>
+                            <div class="trad">« Seigneur, je cherche Ta protection contre les incitations des démons, et je cherche Ta protection, Seigneur, contre leur présence auprès de moi. »</div>
+                            <div class="ref"><strong>Sourate Al-Mu'minun, 23:97-98</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- RIZQ -->
+                    <div class="duaa-category">
+                        <div class="duaa-category-title">Rizq et Bienfaits</div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا آتِنَا مِن لَدُنكَ رَحْمَةً وَهَيِّءْ لَنَا مِنْ أَمْرِنَا رَشَدًا</div>
+                            <div class="trad">« Ô notre Seigneur, donne-nous de Ta part une miséricorde ; et assure-nous la droiture dans tout ce qui nous concerne. »</div>
+                            <div class="ref"><strong>Sourate Al-Kahf, 18:10</strong> — Invocation des Gens de la Caverne</div>
+                        </div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ</div>
+                            <div class="trad">« Seigneur, j'ai grand besoin du bien que Tu feras descendre vers moi. »</div>
+                            <div class="ref"><strong>Sourate Al-Qasas, 28:24</strong> — Invocation de Moussa عليه السلام</div>
+                        </div>
+                    </div>
+
+                    <!-- COMMUNAUTÉ -->
+                    <div class="duaa-category">
+                        <div class="duaa-category-title">Pour les Musulmans</div>
+
+                        <div class="duaa-item">
+                            <div class="arabe">رَبَّنَا اغْفِرْ لَنَا وَلإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالإِيمَانِ وَلاَ تَجْعَلْ فِي قُلُوبِنَا غِلاًّ لِلَّذِينَ آمَنُوا رَبَّنَا إِنَّكَ رَءُوفٌ رَحِيمٌ</div>
+                            <div class="trad">« Seigneur, pardonne-nous, ainsi qu'à nos frères qui nous ont précédés dans la foi ; et ne mets dans nos cœurs aucune rancœur pour ceux qui ont cru. Seigneur, Tu es Compatissant et Très Miséricordieux. »</div>
+                            <div class="ref"><strong>Sourate Al-Hashr, 59:10</strong></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SALAT JANAZA
+        ========================================== -->
+        <div class="main-content content-janaza">
+            <div class="janaza-inner">
+                <div class="etape-titre">
+                    <span class="etape-numero">✦</span>
+                    Salat Al-Janaza — Prière Funéraire
+                </div>
+
+                <div class="janaza-intro">
+                    <h3>Ce qu'il faut savoir</h3>
+                    <p>La prière funéraire est une obligation communautaire (<strong>Fard Kifaya</strong>) : si un groupe l'accomplit, les autres en sont dispensés.</p>
+                    <ul>
+                        <li>Se fait <strong>debout</strong>, du début à la fin</li>
+                        <li><strong>Pas</strong> d'inclinaison (Ruku)</li>
+                        <li><strong>Pas</strong> de prosternation (Sujud)</li>
+                        <li><strong>4 Takbirs</strong> (Allahou Akbar)</li>
+                        <li>Un seul <strong>Salam</strong> à la fin (à droite)</li>
+                    </ul>
+                </div>
+
+                <!-- TAKBIR 1 -->
+                <div class="takbir-section">
+                    <div class="takbir-badge"><span class="num">1</span> Premier Takbir</div>
+                    <div class="takbir-title">Lever les mains et dire :</div>
+                    <div class="invocation">
+                        <div class="arabe" style="text-align: center; direction: ltr;">اللهُ أَكْبَرُ</div>
+                        <div class="phonetique" style="text-align: center;">ALLAHU AKBAR</div>
+                    </div>
+                    <div class="action">
+                        <p><strong>Puis réciter</strong> la sourate <strong>Al-Fatiha</strong> (obligatoire) :</p>
+                    </div>
+                    <div class="invocation">
+                        <div class="arabe">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ ۝ الْحَمْدُ للهِ رَبِّ الْعَالَمِينَ ۝ الرَّحْمٰنِ الرَّحِيمِ ۝ مَالِكِ يَوْمِ الدِّينِ ۝ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ۝ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ۝ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلاَ الضَّالِّينَ</div>
+                        <div class="trad">« Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux. Louange à Allah, Seigneur des mondes. Le Tout Miséricordieux, le Très Miséricordieux. Maître du Jour de la rétribution. C'est Toi que nous adorons, et c'est Toi dont nous implorons le secours. Guide-nous dans le droit chemin. Le chemin de ceux que Tu as comblés de faveurs, non pas de ceux qui ont encouru Ta colère, ni des égarés. »</div>
+                    </div>
+                </div>
+
+                <!-- TAKBIR 2 -->
+                <div class="takbir-section">
+                    <div class="takbir-badge"><span class="num">2</span> Deuxième Takbir</div>
+                    <div class="takbir-title">Sans lever les mains, dire :</div>
+                    <div class="invocation">
+                        <div class="arabe" style="text-align: center; direction: ltr;">اللهُ أَكْبَرُ</div>
+                        <div class="phonetique" style="text-align: center;">ALLAHU AKBAR</div>
+                    </div>
+                    <div class="action">
+                        <p><strong>Puis réciter</strong> la prière sur le Prophète ﷺ (<strong>As-Salat Al-Ibrahimiya</strong>) :</p>
+                    </div>
+                    <div class="invocation">
+                        <div class="invocation-label">As-Salat Al-Ibrahimiya</div>
+                        <div class="arabe">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ ۝ اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ</div>
+                        <div class="phonetique">ALLAHUMMA SALLI 'ALA MUHAMMAD WA 'ALA ALI MUHAMMAD, KAMA SALLAYTA 'ALA IBRAHIM WA 'ALA ALI IBRAHIM, INNAKA HAMIDUN MAJID. ALLAHUMMA BARIK 'ALA MUHAMMAD WA 'ALA ALI MUHAMMAD, KAMA BARAKTA 'ALA IBRAHIM WA 'ALA ALI IBRAHIM, INNAKA HAMIDUN MAJID.</div>
+                        <div class="trad">« Ô Allah, prie sur Muhammad et sur la famille de Muhammad comme Tu as prié sur Ibrahim et sur la famille d'Ibrahim, Tu es certes Digne de louange et de gloire. Ô Allah, bénis Muhammad et la famille de Muhammad comme Tu as béni Ibrahim et la famille d'Ibrahim, Tu es certes Digne de louange et de gloire. »</div>
+                    </div>
+                </div>
+
+                <!-- TAKBIR 3 -->
+                <div class="takbir-section">
+                    <div class="takbir-badge"><span class="num">3</span> Troisième Takbir</div>
+                    <div class="takbir-title">Sans lever les mains, dire :</div>
+                    <div class="invocation">
+                        <div class="arabe" style="text-align: center; direction: ltr;">اللهُ أَكْبَرُ</div>
+                        <div class="phonetique" style="text-align: center;">ALLAHU AKBAR</div>
+                    </div>
+                    <div class="action">
+                        <p><strong>C'est le cœur de la prière funéraire :</strong> l'invocation pour le défunt.</p>
+                    </div>
+
+                    <div class="invocation">
+                        <div class="invocation-label">Invocation pour le défunt (homme)</div>
+                        <div class="arabe">اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ، وَعَافِهِ وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ، وَنَقِّهِ مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الأَبْيَضَ مِنَ الدَّنَسِ، وَأَبْدِلْهُ دَاراً خَيْراً مِنْ دَارِهِ، وَأَهْلاً خَيْراً مِنْ أَهْلِهِ، وَزَوْجاً خَيْراً مِنْ زَوْجِهِ، وَأَدْخِلْهُ الْجَنَّةَ، وَأَعِذْهُ مِنْ عَذَابِ الْقَبْرِ وَمِنْ عَذَابِ النَّارِ</div>
+                        <div class="phonetique">ALLAHUMMAGHFIR LAHU WARHAMHU, WA 'AFIHI WA'FU 'ANHU, WA AKRIM NUZULAHU, WA WASSI' MUDKHALAHU, WAGHSILHU BIL-MA'I WATH-THALJI WAL-BARAD, WA NAQQIHI MINAL-KHATAYA KAMA NAQQAYTATH-THAWBAL-ABYADA MINAD-DANAS. WA ABDILHU DARAN KHAYRAN MIN DARIHI, WA AHLAN KHAYRAN MIN AHLIHI, WA ZAWJAN KHAYRAN MIN ZAWJIHI, WA ADKHILHUL-JANNAH, WA A'IDHU MIN 'ADHABIL-QABRI WA MIN 'ADHABIN-NAR.</div>
+                        <div class="trad">« Ô Allah ! Pardonne-lui et fais-lui miséricorde, accorde-lui le salut et le pardon. Assure-lui une noble demeure et élargis sa tombe. Lave-le avec de l'eau, de la neige et de la grêle. Nettoie-le de ses péchés comme Tu as nettoyé le vêtement blanc de la souillure. Donne-lui en échange une demeure meilleure que la sienne, une famille meilleure que la sienne et une épouse meilleure que la sienne. Fais-le entrer au Paradis et préserve-le du châtiment de la tombe et du châtiment de l'Enfer. »</div>
+                        <div class="ref"><strong>Sahih Muslim (963)</strong></div>
+                    </div>
+
+                    <div class="cas-defunt">
+                        <div class="cas-defunt-title">Pour une femme</div>
+                        <p>Remplacer les suffixes masculins par féminins :</p>
+                        <p><strong>لَهُ → لَهَا</strong> (lahu → laha)</p>
+                        <p><strong>وَارْحَمْهُ → وَارْحَمْهَا</strong> (warhamhu → warhamha)</p>
+                        <p>Et ainsi de suite pour tous les pronoms.</p>
+                    </div>
+
+                    <div class="cas-defunt">
+                        <div class="cas-defunt-title">Pour un enfant</div>
+                        <p>On n'invoque pas le pardon pour lui (car il n'a pas de péchés), mais on invoque pour ses parents :</p>
+                        <div class="invocation" style="margin-top: 12px;">
+                            <div class="arabe">اللَّهُمَّ اجْعَلْهُ فَرَطاً وَذُخْراً لِوَالِدَيْهِ، وَشَفِيعاً مُجَاباً، اللَّهُمَّ ثَقِّلْ بِهِ مَوَازِينَهُمَا، وَأَعْظِمْ بِهِ أُجُورَهُمَا، وَأَلْحِقْهُ بِصَالِحِ الْمُؤْمِنِينَ، وَاجْعَلْهُ فِي كَفَالَةِ إِبْرَاهِيمَ، وَقِهِ بِرَحْمَتِكَ عَذَابَ الْجَحِيمِ</div>
+                            <div class="trad">« Ô Allah, fais de lui une avance et une réserve (de récompenses) pour ses parents, un intercesseur exaucé. Ô Allah, alourdis par lui leurs balances, augmente par lui leurs récompenses, joins-le aux vertueux des croyants, place-le sous la tutelle d'Ibrahim, et protège-le par Ta miséricorde du châtiment de l'Enfer. »</div>
+                        </div>
+                    </div>
+
+                    <div class="invocation" style="margin-top: 22px;">
+                        <div class="invocation-label">Invocation supplémentaire (recommandée)</div>
+                        <div class="arabe">اللَّهُمَّ اغْفِرْ لِحَيِّنَا وَمَيِّتِنَا، وَشَاهِدِنَا وَغَائِبِنَا، وَصَغِيرِنَا وَكَبِيرِنَا، وَذَكَرِنَا وَأُنْثَانَا، اللَّهُمَّ مَنْ أَحْيَيْتَهُ مِنَّا فَأَحْيِهِ عَلَى الإِسْلاَمِ، وَمَنْ تَوَفَّيْتَهُ مِنَّا فَتَوَفَّهُ عَلَى الإِيمَانِ</div>
+                        <div class="phonetique">ALLAHUMMAGHFIR LIHAYYINA WA MAYYITINA, WA SHAHIDINA WA GHA'IBINA, WA SAGHIRINA WA KABIRINA, WA DHAKARINA WA UNTHANA. ALLAHUMMA MAN AHYAYTAHU MINNA FA AHYIHI 'ALAL-ISLAM, WA MAN TAWAFFAYTAHU MINNA FATAWAFFAHU 'ALAL-IMAN.</div>
+                        <div class="trad">« Ô Allah, pardonne à nos vivants et à nos morts, à ceux qui sont présents et à ceux qui sont absents, à nos jeunes et à nos vieux, à nos hommes et à nos femmes. Ô Allah, celui d'entre nous que Tu fais vivre, fais-le vivre sur l'Islam, et celui que Tu fais mourir, fais-le mourir sur la foi. »</div>
+                        <div class="ref"><strong>Sunan Abu Dawud (3201), Sunan At-Tirmidhi (1024) — Sahih</strong></div>
+                    </div>
+                </div>
+
+                <!-- TAKBIR 4 -->
+                <div class="takbir-section">
+                    <div class="takbir-badge"><span class="num">4</span> Quatrième Takbir</div>
+                    <div class="takbir-title">Sans lever les mains, dire :</div>
+                    <div class="invocation">
+                        <div class="arabe" style="text-align: center; direction: ltr;">اللهُ أَكْبَرُ</div>
+                        <div class="phonetique" style="text-align: center;">ALLAHU AKBAR</div>
+                    </div>
+                    <div class="action">
+                        <p>Marquer un <strong>court silence</strong>, ou réciter cette invocation (recommandée) :</p>
+                    </div>
+                    <div class="invocation">
+                        <div class="arabe">اللَّهُمَّ لاَ تَحْرِمْنَا أَجْرَهُ، وَلاَ تَفْتِنَّا بَعْدَهُ، وَاغْفِرْ لَنَا وَلَهُ</div>
+                        <div class="phonetique">ALLAHUMMA LA TAHRIMNA AJRAHU, WA LA TAFTINNA BA'DAHU, WAGHFIR LANA WA LAHU.</div>
+                        <div class="trad">« Ô Allah, ne nous prive pas de sa récompense, ne nous éprouve pas après lui, et pardonne-nous ainsi qu'à lui. »</div>
+                    </div>
+                </div>
+
+                <!-- TASLIM -->
+                <div class="takbir-section">
+                    <div class="takbir-badge" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%); color: var(--text-on-gold);"><span class="num">✓</span> Taslim</div>
+                    <div class="takbir-title">Tourner la tête à DROITE et dire :</div>
+                    <div class="invocation">
+                        <div class="arabe" style="text-align: center; direction: ltr;">السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ</div>
+                        <div class="phonetique" style="text-align: center;">ASSALAMU 'ALAYKUM WA RAHMATULLAH</div>
+                        <div class="trad" style="text-align: center;">« Que la paix et la miséricorde d'Allah soient sur vous. »</div>
+                    </div>
+                    <div class="note">Un seul Salam (à droite) suffit. Certains savants autorisent deux Salams (droite puis gauche), mais un seul est plus authentique pour la Janaza.</div>
+                </div>
+
+                <div class="success" style="font-size: 1.05rem; margin-top: 28px;">
+                    <div>
+                        <strong>La prière est terminée.</strong><br>
+                        Qu'Allah fasse miséricorde au défunt et l'accueille dans Ses vastes Jardins.<br>
+                        آمين
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==========================================
+             FOOTER
+        ========================================== -->
+        <footer>
+            <div class="dua">تَقَبَّلَ اللهُ مِنَّا وَمِنْكُمْ</div>
+            <p>Qu'Allah accepte de nous et de vous</p>
+        </footer>
+
+    </div>
+
+        <!-- Bouton Scroll to Top -->
+        <button class="scroll-top" id="scrollTop" aria-label="Remonter en haut"></button>
+
+        <script>
+            // Bouton Scroll to Top
+            const scrollBtn = document.getElementById('scrollTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    scrollBtn.classList.add('visible');
+                } else {
+                    scrollBtn.classList.remove('visible');
+                }
+            });
+            
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        </script>
+    </div>
+
+        <!-- PWA Service Worker Registration -->
+        <script>
+            // Enregistrement du Service Worker
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('service-worker.js')
+                        .then((registration) => {
+                            console.log('✅ Service Worker enregistré:', registration.scope);
+                        })
+                        .catch((error) => {
+                            console.log('❌ Erreur Service Worker:', error);
+                        });
+                });
+            }
+
+            // Détection de l'installation PWA
+            let deferredPrompt;
+            const installBanner = document.getElementById('installBanner');
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                // Afficher le bouton d'installation si tu en as un
+                if (installBanner) {
+                    installBanner.style.display = 'block';
+                }
+            });
+        </script>
+
+</body>
+</html>

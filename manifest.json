@@ -1,0 +1,27 @@
+{
+  "name": "Sahifat-Al-Mu3tamir — Guide Sacré du Pèlerin",
+  "short_name": "Sahifat",
+  "description": "Guide complet pour accomplir la 'Omra et la Salat Janaza avec toutes les invocations",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1a2a21",
+  "theme_color": "#1a2f23",
+  "categories": ["lifestyle", "education"],
+  "lang": "fr",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
